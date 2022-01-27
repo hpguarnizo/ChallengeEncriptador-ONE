@@ -120,7 +120,7 @@ botonDesencriptar.addEventListener("click", function(event){
         form.texto.value ="";
         spanTextoEncriptado.innerHTML= "";
     }else{
-        spanTextoEncriptado.innerHTML = "No hay nada para desencriptar!";s
+        spanTextoEncriptado.innerHTML = "No hay nada para desencriptar!";
 
     }
     
