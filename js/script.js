@@ -62,7 +62,7 @@ botonEncriptado.addEventListener("click", function(event){
         form.texto.value ="";
         spanTextoEncriptado.innerHTML= "";
     }else{
-        spanTextoEncriptado.innerHTML = "Por favor ingresa texto a encriptar";s
+        spanTextoEncriptado.innerHTML = "Por favor ingresa texto a encriptar";
 
     }
 
