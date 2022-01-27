@@ -40,13 +40,20 @@ window.onload = function () {
 
 //Función para copiar texto encriptado
 botonCopiar.addEventListener("click", function(event){
-    textoEncriptado.select(); 
-    // Copiando el texto seleccionado
-    var successful = document.execCommand('copy');
-    if(successful){
-        textoCopiado.innerHTML = 'Copiado!';
-        textArea.value ="";
+
+    if (textoEncriptado.value != ""){
+        textoEncriptado.select(); 
+        // Copiando el texto seleccionado
+        var successful = document.execCommand('copy');
+        if(successful){
+            textoCopiado.innerHTML = 'Copiado!';
+            textArea.value ="";
+            
         } 
+    }else{
+        textoCopiado.innerHTML = 'Nada para copiar!';
+    }
+    
 });
 
 
@@ -71,7 +78,7 @@ botonEncriptado.addEventListener("click", function(event){
 //Función para validar el texto que se ingresa en nuestro input, utilizamos expresion regular mediante RegExp.
 function validarTexto(entrada){
     var texto = entrada.value;
-    var validar = new RegExp("[^a-z\#\&\ ]+");
+    var validar = new RegExp("[^a-z\ ]+");
     if (validar.test(texto)){
         texto = texto.substr(0,texto.length-1)
     } 
@@ -107,8 +114,16 @@ botonDesencriptar.addEventListener("click", function(event){
     var form = document.querySelector("#form-texto");
 
     var texto = form.texto.value;
-    //console.log(texto);
-    desencriptarTexto(texto);
+
+    if(texto.length > 0){
+        desencriptarTexto(texto);
+        form.texto.value ="";
+        spanTextoEncriptado.innerHTML= "";
+    }else{
+        spanTextoEncriptado.innerHTML = "No hay nada para desencriptar!";
+
+    }
+    
 });
 //Función para desencriptar el texto, usamos la función replace, esta busca coincidencias de cadenas de texto y las reemplaza por un valor definido.
 function desencriptarTexto(texto){
@@ -128,6 +143,7 @@ botonLimpiar.addEventListener("click", function(event){
     form.texto.value ="";
     textoCopiado.innerHTML ="";
     document.getElementById("mi-texto").focus();
+    spanTextoEncriptado.innerHTML ="";
 });
 
 botonCopiar.addEventListener("click", botonCopiar);
