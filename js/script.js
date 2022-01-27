@@ -32,11 +32,11 @@ var textArea = document.getElementById("msg");
 var textoCopiado = document.getElementById("texto-copiado");
 var copy = document.getElementById("btn-copy");
 
+var spanTextoEncriptado = document.getElementById("texto-encriptar");
 //Nos enfocamos en el area donde ingresamos el texto a encriptar
 window.onload = function () {
     document.getElementById("mi-texto").focus();
 }
-
 
 //Función para copiar texto encriptado
 botonCopiar.addEventListener("click", function(event){
@@ -56,8 +56,16 @@ botonEncriptado.addEventListener("click", function(event){
 
     var texto = form.texto.value;
     //console.log(texto);
-    encriptarTexto(texto);
-    form.texto.value ="";
+
+    if(texto.length > 0){
+        encriptarTexto(texto);
+        form.texto.value ="";
+        spanTextoEncriptado.innerHTML= "";
+    }else{
+        spanTextoEncriptado.innerHTML = "Por favor ingresa texto a encriptar";s
+
+    }
+
 });
 
 //Función para validar el texto que se ingresa en nuestro input, utilizamos expresion regular mediante RegExp.

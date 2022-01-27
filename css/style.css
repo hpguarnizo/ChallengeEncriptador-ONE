@@ -110,3 +110,6 @@ a.menu:hover {
   padding:5px;
 }
 
+#texto-encriptar, #texto-copiado{
+	color: red;
+}
